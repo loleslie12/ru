@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RUNR Admin — Design Preview</title>
+  <link rel="stylesheet" href="src/styles.css">
+  <style>
+    @page { size: 1500px 1000px; margin: 0; }
+    html, body { margin: 0; width: 1500px; min-height: 1000px; }
+    .preview-static .sidebar .nav-button span{display:none}
+    .preview-static .nav-button{height:48px}
+    .preview-static .app-shell{height:944px;min-height:944px}
+    .preview-static .app-main{min-height:0}
+    .preview-static .workspace-grid{min-height:0}
+    .preview-static .users-table tbody tr{cursor:default}
+    .preview-static .mobile-user-list{display:none}
+    .preview-static .simulate-session{display:none}
+    @media(max-width:700px){.preview-static .mobile-user-list{display:grid}.preview-static .table-scroll{display:none}}
+  </style>
+</head>
+<body>
+<div class="app-background preview-static">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><div class="brand-mark"><span>R</span><i></i></div></div>
+      <div class="sidebar-nav-label">WORKSPACE</div>
+      <nav class="sidebar-nav">
+        <button class="nav-button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg><span>Overview</span></button>
+        <button class="nav-button nav-active"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>User directory</span></button>
+        <button class="nav-button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg><span>Access</span></button>
+      </nav>
+      <div class="sidebar-bottom"><button class="nav-button"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg><span>Help centre</span></button><button class="sidebar-user"><span class="sidebar-avatar">RA</span></button></div>
+    </aside>
+    <div class="app-main">
+      <header class="topbar">
+        <div class="breadcrumb"><span>RUNR</span><span class="crumb-slash">/</span><b>People & access</b></div>
+        <div class="topbar-actions">
+          <div class="global-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input placeholder="Search by name, email, phone or ID"><kbd>⌘ K</kbd></div>
+          <button class="filter-button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>Filters<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <span class="topbar-divider"></span><button class="icon-button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><i class="notification-dot"></i></button><button class="topbar-profile"><span>RA</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+      </header>
+      <div class="workspace-grid">
+        <main class="workspace-content"><div class="page-content">
+          <div class="page-heading"><div><span class="eyebrow">PEOPLE & ACCESS</span><h1>Manage your people.</h1><p>One place to keep every RUNR account in order.</p></div><span class="preview-flag"><span></span> PREVIEW DATA</span></div>
+          <div class="metric-grid">
+            <section class="metric-card"><div class="metric-top"><span class="metric-icon tone-blue"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span><span class="metric-kicker">Total accounts</span><span class="muted-icon">···</span></div><div class="metric-value-row"><strong>8</strong><span class="metric-change">Sample</span></div><div class="metric-foot">Across all account roles · sample</div></section>
+            <section class="metric-card"><div class="metric-top"><span class="metric-icon tone-green"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/></svg></span><span class="metric-kicker">Active accounts</span><span class="muted-icon">···</span></div><div class="metric-value-row"><strong>6</strong><span class="metric-change">Sample</span></div><div class="metric-foot">Marked active in preview data</div></section>
+            <section class="metric-card"><div class="metric-top"><span class="metric-icon tone-orange"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4m0 4h.01"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><span class="metric-kicker">Needs attention</span><span class="muted-icon">···</span></div><div class="metric-value-row"><strong>4</strong><span class="metric-change" style="background:#fff2e5;color:#c58b40">Review</span></div><div class="metric-foot">Status or verification review</div></section>
+          </div>
+          <section class="table-card"><div class="table-toolbar"><div><h2>User directory</h2><p>Search, review and manage accounts across RUNR.</p></div><div class="table-actions"><span class="result-count">8 accounts</span><button class="button button-light button-sm">↓ Export</button></div></div>
+            <div class="mobile-user-list">
+              <button class="mobile-user-card"><div class="mobile-user-top"><div class="avatar avatar-lilac">AM</div><span><b>Ama Serwaa Mensah</b><small>USR-02841</small></span><span class="status-pill status-success"><i></i>Active</span></div><div class="mobile-user-meta"><span>ama.mensah@example.com</span><span>Customer</span></div></button>
+              <button class="mobile-user-card"><div class="mobile-user-top"><div class="avatar avatar-mint">KO</div><span><b>Kofi Owusu</b><small>USR-02840</small></span><span class="status-pill status-success"><i></i>Active</span></div><div class="mobile-user-meta"><span>kofi.owusu@example.com</span><span>Rider</span></div></button>
+              <button class="mobile-user-card"><div class="mobile-user-top"><div class="avatar avatar-peach">NB</div><span><b>Nana Akua Boateng</b><small>USR-02839</small></span><span class="status-pill status-muted"><i></i>Deactivated</span></div><div class="mobile-user-meta"><span>nana.boateng@example.com</span><span>Partner staff</span></div></button>
+            </div>
+            <div class="table-scroll"><table class="users-table"><thead><tr><th>USER</th><th>CONTACT</th><th>ROLE</th><th>STATUS</th><th>JOINED</th><th></th></tr></thead><tbody>
+              <tr><td><div class="user-cell"><div class="avatar avatar-lilac">AM</div><span><b>Ama Serwaa Mensah</b><small>USR-02841</small></span></div></td><td><span class="contact-primary">ama.mensah@example.com</span><small class="contact-secondary">+233 24 555 0194</small></td><td><span class="role-label">Customer</span></td><td><span class="status-pill status-success"><i></i>Active</span></td><td><span class="joined-date">18 Nov 2026</span></td><td>›</td></tr>
+              <tr><td><div class="user-cell"><div class="avatar avatar-mint">KO</div><span><b>Kofi Owusu</b><small>USR-02840</small></span></div></td><td><span class="contact-primary">kofi.owusu@example.com</span><small class="contact-secondary">+233 20 318 4472</small></td><td><span class="role-label">Rider</span></td><td><span class="status-pill status-success"><i></i>Active</span></td><td><span class="joined-date">16 Nov 2026</span></td><td>›</td></tr>
+              <tr><td><div class="user-cell"><div class="avatar avatar-peach">NB</div><span><b>Nana Akua Boateng</b><small>USR-02839</small></span></div></td><td><span class="contact-primary">nana.boateng@example.com</span><small class="contact-secondary">+233 55 901 2381</small></td><td><span class="role-label">Partner staff</span></td><td><span class="status-pill status-muted"><i></i>Deactivated</span></td><td><span class="joined-date">14 Nov 2026</span></td><td>›</td></tr>
+              <tr><td><div class="user-cell"><div class="avatar avatar-blue">YA</div><span><b>Yaw Asante</b><small>USR-02838</small></span></div></td><td><span class="contact-primary">yaw.asante@example.com</span><small class="contact-secondary">+233 27 774 9102</small></td><td><span class="role-label">Customer</span></td><td><span class="status-pill status-danger"><i></i>Suspended</span></td><td><span class="joined-date">12 Nov 2026</span></td><td>›</td></tr>
+              <tr><td><div class="user-cell"><div class="avatar avatar-rose">EA</div><span><b>Efua Addo</b><small>USR-02837</small></span></div></td><td><span class="contact-primary">efua.addo@example.com</span><small class="contact-secondary">+233 50 663 7108</small></td><td><span class="role-label">Customer</span></td><td><span class="status-pill status-success"><i></i>Active</span></td><td><span class="joined-date">10 Nov 2026</span></td><td>›</td></tr>
+            </tbody></table></div>
+            <div class="pagination"><span>Showing <b>1–5</b> of <b>8</b> users</span><div class="pagination-controls"><button>‹</button><span>Page <b>1</b> of <b>2</b></span><button>›</button></div></div>
+          </section>
+        </div><footer class="workspace-footer"><span>RUNR ADMIN <i>·</i> SPRINT 17 PROTOTYPE</span><span>Built for clarity. Designed for control.</span></footer></main>
+        <aside class="right-rail">
+          <section class="rail-card admin-card"><div class="rail-card-top"><span class="rail-eyebrow">ADMINISTRATOR</span><button class="subtle-icon">···</button></div><div class="admin-identity"><div class="admin-avatar">RA</div><div><b>Welcome back, Admin</b><span>Your workspace is looking good.</span></div></div><div class="admin-meta"><span>Current role</span><b>♢ Administrator</b></div><div class="rail-separator"></div><div class="rail-section-title"><b>Security check</b><span class="secure-tag"><i></i> Protected</span></div><div class="security-row"><span class="security-icon">♧</span><span><b>Two-factor authentication</b><small>Extra layer for your account</small></span><span class="on-pill">ON</span></div><button class="rail-link">Manage security <span>→</span></button></section>
+          <section class="rail-card activity-card"><div class="rail-section-title"><div><span class="rail-eyebrow">LIVE FEED</span><h3>Recent activity</h3></div><span class="live-pulse">LIVE</span></div><div class="activity-list"><div class="activity-item"><span class="activity-mark activity-blue">✓</span><span><b>Account verified</b><small>Ama Serwaa Mensah</small><time>12 min ago</time></span></div><div class="activity-item"><span class="activity-mark activity-orange">!</span><span><b>Account suspended</b><small>Yaw Asante</small><time>48 min ago</time></span></div><div class="activity-item"><span class="activity-mark activity-violet">♙</span><span><b>Role updated</b><small>Kojo Nyarko · Rider</small><time>2 hours ago</time></span></div></div><div class="rail-note"><span class="info-mark">i</span> Activity shown here is sample content until the activity endpoint is confirmed.</div></section>
+          <section class="rail-tip"><div class="tip-icon">✦</div><div><b>Admin tip</b><p>Role changes take effect on a user’s next sign-in or token refresh.</p></div></section><div class="rail-footer"><span>RUNR ADMIN PORTAL</span><span>SPRINT 17 · BUILD 0.1</span></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>
