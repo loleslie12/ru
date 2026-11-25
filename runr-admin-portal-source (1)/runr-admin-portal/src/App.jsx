@@ -8,6 +8,8 @@ import {
   ShieldAlert, ShieldCheck, Smartphone, SlidersHorizontal, Sparkles, User,
   UserCheck, UserCog, UserRound, Users, X, Zap
 } from 'lucide-react';
+import Orders from './Orders.jsx';
+import { Package, Truck } from 'lucide-react';
 import { api } from './services/api';
 
 const cx = (...parts) => parts.filter(Boolean).join(' ');
@@ -42,6 +44,9 @@ function Sidebar({ page, setPage, openProfile }) {
   const primary = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'users', label: 'User directory', icon: Users },
+    { id: 'orders', label: 'Orders', icon: Package },
+    { id: 'dispatch', label: 'Dispatch', icon: Truck },
+    { id: 'audit', label: 'Order audit', icon: FileText },
     { id: 'access', label: 'Access & permissions', icon: ShieldCheck }
   ];
   return <aside className="sidebar">
@@ -344,7 +349,7 @@ function AccessDenied({ onBack }) {
 }
 
 export default function App() {
-  const [page, setPage] = useState('users');
+  const [page, setPage] = useState('orders');
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [admin, setAdmin] = useState({ name: 'RUNR Admin', role: 'Administrator', email: 'admin@runr.app', permissions: { changeRole: true, changeStatus: true, verifyUser: true, recoverAccount: true } });
@@ -382,7 +387,7 @@ export default function App() {
   function handleLogin(response) { setPendingLogin(response); if (response.requires2FA) setLoginStage('2fa'); else { setSignedIn(true); setLoginStage('dashboard'); } }
   function finishLogin() { setSignedIn(true); setLoginStage('dashboard'); setPage(returnPage); notify('You’re signed in to the RUNR admin preview.'); }
   function signOut() { setSignedIn(false); setLoginStage('login'); setModal(null); setSelectedUser(null); }
-  const pageLabel = page === 'users' ? 'People & access' : page === 'overview' ? 'Overview' : page === 'profile' ? 'My profile' : 'Access & permissions';
+  const pageLabel = ['orders','dispatch','audit'].includes(page) ? 'Parcel operations' : page === 'users' ? 'People & access' : page === 'overview' ? 'Overview' : page === 'profile' ? 'My profile' : 'Access & permissions';
 
   if (!signedIn) {
     if (loginStage === '2fa') return <TwoFactorLogin onVerify={finishLogin} onBack={() => setLoginStage('login')}/>;
@@ -396,7 +401,8 @@ export default function App() {
       <div className="app-main">
         <Header query={query} setQuery={setQuery} roleFilter={roleFilter} setRoleFilter={setRoleFilter} statusFilter={statusFilter} setStatusFilter={setStatusFilter} roles={roles} pageLabel={pageLabel} onNotifications={() => notify('You’re all caught up.')} />
         <div className="workspace-grid">
-          <main className="workspace-content">
+          <div style={{display:['orders','dispatch','audit'].includes(page)?'contents':'none'}}><Orders mode={page} admin={admin}/></div>
+          <main style={{display:['orders','dispatch','audit'].includes(page)?'none':undefined}} className="workspace-content">
             {page === 'users' && <div className="page-content"><div className="page-heading"><div><span className="eyebrow">PEOPLE & ACCESS</span><h1>Manage your people.</h1><p>One place to keep every RUNR account in order.</p></div><PreviewFlag/></div>
               <div className="metric-grid"><MetricCard icon={Users} label="Total accounts" value={users.length.toLocaleString()} tone="blue" footnote="Across all account roles"/><MetricCard icon={UserCheck} label="Active accounts" value={users.filter((u) => u.status === 'Active').length.toLocaleString()} tone="green" footnote="Marked active in preview data"/><MetricCard icon={ShieldAlert} label="Needs attention" value={users.filter((u) => u.status !== 'Active' || !u.verified).length.toLocaleString()} tone="orange" footnote="Status or verification review"/></div>
               {(roleFilter !== 'All roles' || statusFilter !== 'All statuses') && <div className="active-filters"><span>Active filters</span>{roleFilter !== 'All roles' && <button onClick={() => setRoleFilter('All roles')}>{roleFilter} <X size={12}/></button>}{statusFilter !== 'All statuses' && <button onClick={() => setStatusFilter('All statuses')}>{statusFilter} <X size={12}/></button>}<button className="clear-filters" onClick={() => {setRoleFilter('All roles');setStatusFilter('All statuses')}}>Clear all</button></div>}

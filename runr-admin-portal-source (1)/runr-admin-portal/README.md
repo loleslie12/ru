@@ -67,3 +67,6 @@ The orders and payments destinations are shown as unavailable in this Sprint 17 
 6. Open profile; inspect active sessions; simulate session expiry and sign-out-all.
 7. Test at phone width, tablet portrait/landscape, iOS Safari and Android Chrome. Confirm the keyboard does not cover critical form controls and bottom-sheet actions remain reachable.
 8. Compare the built UI with the final Figma file, map every visible field to Swagger, and clearly flag any proposed endpoint still mocked.
+
+## Part F — Orders and parcel management
+React JSX module `src/Orders.jsx` and `src/orders.css`, integrated into the original sidebar. Run `npm install` then `npm run dev`. Orders, dispatch and audit share in-memory demo state. Quotes, rider eligibility, status transitions and cancellation override are illustrative only. No live payments, notifications, tracking URL, permissions enforcement or backend connections. New customer registration is blocked pending confirmation. Backend must confirm F4/F9 contracts, server-side authorization, atomic assignment, refunds, and audit persistence. Browser and production build not verified.
